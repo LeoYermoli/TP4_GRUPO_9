@@ -11,12 +11,29 @@ class MatrizAdyacenciaTest {
 	
 	private MatrizAdyacencia Mat = new MatrizAdyacencia(4);
 	
-
+	
+	/*a. Crear un método llamado agregarElementoTest, que verifique que
+	luego de agregar un elemento este elemento exista dentro de la matriz*/
+	
+	//@Disabled
+	@Test
 	public void agregarElementoTest() {
+			Mat.agregarElemento(1, 1); 					
+			assertEquals(true, Mat.existeElemento(1, 1));
 		
 	}
 	
+	/*b. Crear un método llamado agregarElementoSimetriaTest, que
+	verifique que luego de agregar un elemento, ese exista en su posición
+	opuesta/simétrica. Ejemplo, si agrego un elemento en la posición [2,3],
+	verificar que se haya agregado el elemento [3,2]*/
+	//@Disabled
+	@Test
 	public void agregarElementoSimetriaTest() {
+		Mat.agregarElemento(3, 2); 					
+		assertEquals(true, Mat.existeElemento(3, 2));
+		Mat.agregarElemento(2, 3); 					
+		assertEquals(true, Mat.existeElemento(2, 3));
 		
 	}
 	//Prueba
