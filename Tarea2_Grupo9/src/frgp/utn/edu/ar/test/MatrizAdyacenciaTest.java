@@ -37,7 +37,7 @@ class MatrizAdyacenciaTest {
 		assertEquals(false, Mat.existeElemento(1, 3));  // Verifico que el elemento este vacio
 	}
 	
-
+//PRUEBA
 	public void contarRelacionesTest() {
 		
 	}
