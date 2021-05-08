@@ -56,11 +56,44 @@ class MatrizAdyacenciaTest {
 	
 
 	public void contarRelacionesTest() {
-		
+		Mat.agregarElemento(2,3);	
+		Mat.agregarElemento(1,3);	
+		Mat.agregarElemento(1,2);	
+		assertEquals(3, Mat.getCantidadElementos());
 	}
 	
 	public void existenTodosLosElementoTest() {
-		
+		int cont=0;
+		for(int i=0; i<4; i++)
+		{
+		   for(int j=0; j<4; j++)
+			   Mat.agregarElemento(i, j);
+				   cont++;
+		}
+		for(int i=0; i<Mat.getCantidadElementos()/2; i++)
+		{
+		   for(int j=0; j<Mat.getCantidadElementos()/2; j++)
+		   {
+			   if (i!=j)
+			   {/*simetrias*/
+				   //System.out.println("simetricos");
+				   //System.out.println(i + ", " + j);
+				   //System.out.println(Mat.existeElemento(i, j));
+				   //System.out.println(j + ", " + i);
+				   //System.out.println(Mat.existeElemento(j, i));
+				   assertEquals(true,Mat.existeElemento(i, j));
+				   assertEquals(true,Mat.existeElemento(j, i));
+			   }
+			   else
+			   {/*simples*/
+				   //System.out.println("simples");
+				   //System.out.println(i + ", " + j);//0,0 //1,1// 2,2//3,3 
+				   //System.out.println(Mat.existeElemento(i, j));
+				   assertEquals(true,Mat.existeElemento(i, j));
+			   }
+		   }
+		}
+		assertEquals(cont*2, Mat.getCantidadElementos());//
 	}
 	
 	public void agregarElementoFilaNegativaTest() {
