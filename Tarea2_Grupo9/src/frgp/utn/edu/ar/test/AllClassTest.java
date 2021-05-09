@@ -1,11 +1,11 @@
 package frgp.utn.edu.ar.test;
 
+import org.junit.platform.runner.JUnitPlatform;
+import org.junit.platform.suite.api.SelectClasses;
 import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-import org.junit.runners.Suite.SuiteClasses;
 
-@RunWith(Suite.class)
-@SuiteClasses({ AllPackageTest.class })
+@RunWith(JUnitPlatform.class)
+@SelectClasses(MatrizAdyacenciaTest.class)
 public class AllClassTest {
 
 }

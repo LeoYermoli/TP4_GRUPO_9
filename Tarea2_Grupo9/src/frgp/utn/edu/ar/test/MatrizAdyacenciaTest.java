@@ -1,8 +1,6 @@
 package frgp.utn.edu.ar.test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.Disabled;
+import static org.junit.Assert.assertEquals;
 import org.junit.jupiter.api.Test;
 
 import frgp.utn.edu.ar.main.MatrizAdyacencia;
@@ -10,7 +8,7 @@ import frgp.utn.edu.ar.main.MatrizAdyacencia;
 class MatrizAdyacenciaTest {
 	
 	private MatrizAdyacencia Mat = new MatrizAdyacencia(4);
-	
+	private MatrizAdyacencia Mat2 = new MatrizAdyacencia(4);
 	
 	/*a. Crear un método llamado agregarElementoTest, que verifique que
 	luego de agregar un elemento este elemento exista dentro de la matriz*/
@@ -103,9 +101,17 @@ class MatrizAdyacenciaTest {
 	public void agregarElementoColumnaNegativaTest() {
 		
 	}
-
-	public void agregarElementoFueraRangoTest() {
-		
+	
+//	i. Crear un método llamado agregarElementoFueraRangoTest que
+//	verifique que, si uno quiere agregar un elemento en una columna fuera
+//	del rango, éste arroje una excepción. Ejemplo: si tenemos una matriz de
+//	2x2,(dos filas, dos columnas) probar que si uno quiere agregar en la
+//	columna 3 o fila 3, se arroje una excepción
+	
+	@Test//(expected = Exception.class)
+	public void agregarElementoFueraRangoTest(){
+		Mat2.agregarElemento(2, 3);
+		assertEquals(false, Mat.existeElemento(2, 3));
 	}
 
 
