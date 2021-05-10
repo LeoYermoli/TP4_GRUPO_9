@@ -3,6 +3,7 @@ package frgp.utn.edu.ar.test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -111,10 +112,18 @@ class MatrizAdyacenciaTest {
 //	2x2,(dos filas, dos columnas) probar que si uno quiere agregar en la
 //	columna 3 o fila 3, se arroje una excepción
 	
-	@Test//(expected = Exception.class)
+	@Test
 	public void agregarElementoFueraRangoTest(){
-		Mat2.agregarElemento(2, 3);
-		assertEquals(false, Mat.existeElemento(2, 3));
+		int i = 2;
+		int j = 3;
+		Mat2.agregarElemento(i,j);
+	    Exception thrown = assertThrows(
+	            Exception.class,
+	            () -> Mat2.existeElemento(i,j),
+	            "El elemento a["+i+","+j+"] está fuera del rango de la matrizAdyacente."
+	     );
+
+	     assertTrue(thrown.getMessage().contains("Excepción por elemento fuera de rango"));
 	}
 
 
