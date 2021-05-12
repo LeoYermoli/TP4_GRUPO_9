@@ -1,8 +1,6 @@
 package frgp.utn.edu.ar.test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import org.junit.Test;
 import org.junit.jupiter.api.Disabled;
 
@@ -28,7 +26,7 @@ public class MatrizAdyacenciaTest {
 	verifique que luego de agregar un elemento, ese exista en su posición
 	opuesta/simétrica. Ejemplo, si agrego un elemento en la posición [2,3],
 	verificar que se haya agregado el elemento [3,2]*/
-	//@Disabled
+	@Disabled
 	@Test
 	public void agregarElementoSimetriaTest() {
 		mat.agregarElemento(3, 2); 					
@@ -37,8 +35,8 @@ public class MatrizAdyacenciaTest {
 		assertEquals(true, mat.existeElemento(2, 3));
 		
 	}
-	//Prueba
-	//@Disabled
+	
+
 	@Test
 	public void eliminarElementoTest() {
 		
@@ -47,6 +45,7 @@ public class MatrizAdyacenciaTest {
 		assertEquals(false, mat.existeElemento(1, 1));	// Pruebo si el elemento esta vacio
 	}
 	
+
 	@Test
 	public void eliminarElementoSimetricoTest() {
 		
@@ -63,6 +62,7 @@ public class MatrizAdyacenciaTest {
 		assertEquals(3, mat.getCantidadElementos());
 	}
 	
+	@Disabled
 	public void existenTodosLosElementoTest() {
 		int cont=0;
 		for(int i=0; i<4; i++)
@@ -76,20 +76,12 @@ public class MatrizAdyacenciaTest {
 		   for(int j=0; j<mat.getCantidadElementos()/2; j++)
 		   {
 			   if (i!=j)
-			   {/*simetrias*/
-				   //System.out.println("simetricos");
-				   //System.out.println(i + ", " + j);
-				   //System.out.println(mat.existeElemento(i, j));
-				   //System.out.println(j + ", " + i);
-				   //System.out.println(mat.existeElemento(j, i));
+			   {
 				   assertEquals(true,mat.existeElemento(i, j));
 				   assertEquals(true,mat.existeElemento(j, i));
 			   }
 			   else
-			   {/*simples*/
-				   //System.out.println("simples");
-				   //System.out.println(i + ", " + j);//0,0 //1,1// 2,2//3,3 
-				   //System.out.println(mat.existeElemento(i, j));
+			   {
 				   assertEquals(true,mat.existeElemento(i, j));
 			   }
 		   }
@@ -97,12 +89,20 @@ public class MatrizAdyacenciaTest {
 		assertEquals(cont*2, mat.getCantidadElementos());//
 	}
 	
+	/*g. Crear un método llamado agregarElementoFilaNegativaTest
+	 *que verifique que, si uno quiere agregar un elemento en una fila negativa, 
+	 *éste arroje una excepción.*/
+	@Test(expected = ArrayIndexOutOfBoundsException.class)
 	public void agregarElementoFilaNegativaTest() {
-		
+		mat.agregarElemento(-2,2);
 	}
 
+	/*h. Crear un método llamado agregarElementoColumnaNegativaTest
+	que verifique que, si uno quiere agregar un elemento en una columna negativa, 
+	éste arroje una excepción.*/
+	@Test(expected = ArrayIndexOutOfBoundsException.class)
 	public void agregarElementoColumnaNegativaTest() {
-		
+		mat.agregarElemento(2,-2);
 	}
 	
 //	i. Crear un método llamado agregarElementoFueraRangoTest que
@@ -111,10 +111,10 @@ public class MatrizAdyacenciaTest {
 //	2x2,(dos filas, dos columnas) probar que si uno quiere agregar en la
 //	columna 3 o fila 3, se arroje una excepción
 	
-	
+
 	@Test(expected = ArrayIndexOutOfBoundsException.class)
 	public void agregarElementoFueraRangoTest(){
-		mat2.agregarElemento(2,2);
+		mat2.agregarElemento(2,3);
 	}
 
 
